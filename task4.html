@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Layout - Black and Yellow Theme</title>
+    <style>
+        :root {
+            --primary-color: #ffd700; /* Yellow */
+            --secondary-color: #1a1a1a; /* Dark gray, almost black */
+            --text-color: #ffffff; /* White text for contrast */
+            --accent-color: #ffee58; /* Light yellow for accents */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: grid;
+            grid-template-areas:
+                "header header"
+                "sidebar main"
+                "footer footer";
+            grid-template-columns: 1fr 3fr;
+            grid-template-rows: auto 1fr auto;
+            min-height: 100vh;
+            background-color: var(--secondary-color);
+            color: var(--text-color);
+        }
+
+        header {
+            grid-area: header;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 1rem;
+        }
+
+        .sidebar {
+            grid-area: sidebar;
+            background-color: var(--secondary-color);
+            padding: 1rem;
+            border-right: 1px solid var(--primary-color);
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin-bottom: 1rem;
+        }
+
+        .sidebar ul li a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        main {
+            grid-area: main;
+            padding: 1rem;
+        }
+
+        footer {
+            grid-area: footer;
+            background-color: var(--primary-color);
+            color: var(--secondary-color);
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .dashboard-item {
+            background-color: var(--secondary-color);
+            border: 1px solid var(--primary-color);
+            border-radius: 4px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        h1, h2, h3 {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>BeeHive Dashboard</h1>
+    </header>
+
+    <nav class="sidebar">
+        <h2>Navigation</h2>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#analytics">Analytics</a></li>
+            <li><a href="#reports">Reports</a></li>
+            <li><a href="#settings">Settings</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div id="home">
+            <h2>Home</h2>
+            <div class="dashboard-grid">
+                <div class="dashboard-item">
+                    <h3>Active Users</h3>
+                    <p>1,234</p>
+                </div>
+                <div class="dashboard-item">
+                    <h3>Revenue</h3>
+                    <p>Rs.2,00,000 Lakhs</p>
+                </div>
+                <div class="dashboard-item">
+                    <h3>New Orders</h3>
+                    <p>89</p>
+                </div>
+                <div class="dashboard-item">
+                    <h3>Traffic</h3>
+                    <p>5,678 Visits</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="analytics" style="display: none;">
+            <h2>Analytics</h2>
+            <div class="dashboard-item">
+                <h3>User Growth</h3>
+                <p>15% increase this month</p>
+            </div>
+            <div class="dashboard-item">
+                <h3>Conversion Rate</h3>
+                <p>3.2% (0.5% increase)</p>
+            </div>
+        </div>
+
+        <div id="reports" style="display: none;">
+            <h2>Reports</h2>
+            <div class="dashboard-item">
+                <h3>Monthly Sales Report</h3>
+                <p>Download PDF</p>
+            </div>
+            <div class="dashboard-item">
+                <h3>User Engagement Report</h3>
+                <p>View Details</p>
+            </div>
+        </div>
+
+        <div id="settings" style="display: none;">
+            <h2>Settings</h2>
+            <div class="dashboard-item">
+                <h3>Account Settings</h3>
+                <p>Update your profile and preferences</p>
+            </div>
+            <div class="dashboard-item">
+                <h3>Notification Settings</h3>
+                <p>Manage your email and push notifications</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 BeeHive Dashboard. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Simple navigation script
+        document.querySelectorAll('.sidebar a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('main > div').forEach(div => div.style.display = 'none');
+                document.querySelector(this.getAttribute('href')).style.display = 'block';
+            });
+        });
+    </script>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>BeeHive Dashboard</title>
+        <style>
+            /* ... (previous styles remain the same) ... */
+    
+            header {
+                grid-area: header;
+                background-color: var(--primary-color);
+                color: var(--secondary-color);
+                padding: 1rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+    
+            .logo {
+                font-size: 2rem;
+                font-weight: bold;
+            }
+    
+            .caption {
+                font-size: 1.2rem;
+                text-align: right;
+                line-height: 1.5;
+            }
+    
+            .emoji-large {
+                font-size: 2.5rem;
+            }
+    
+            @media (max-width: 768px) {
+                header {
+                    flex-direction: column;
+                    text-align: center;
+                }
+    
+                .caption {
+                    text-align: center;
+                    margin-top: 1rem;
+                }
+            }
+        </style>
+    
+        <header>
+            <div class="logo">
+                <span class="emoji-large">🐝</span> BeeHive Dashboard
+            </div>
+            <div class="caption">
+                Buzzing with Insights! 📊<br>
+                Sweet Success Ahead 🍯<br>
+                <span class="emoji-large">📈🚀🎯</span>
+            </div>
+        </header>
+    
+        <!-- ... (rest of the body content remains the same) ... -->
+    
+</body>
+</html>
